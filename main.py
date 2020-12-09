@@ -18,7 +18,7 @@ session = DBSession()
 @app.route('/errors')
 def showErrors():
     errors = session.query(UnityError).all()
-    return render_template('errors.html', errors=errors)
+    return render_template('home.html', errors=errors)
 
 
 @app.route('/errors/new/', methods=['GET', 'POST'])
@@ -126,6 +126,5 @@ def errorFunctionId(id):
         return deleteAnError(id)
 
 
-if __name__ == '__main__':
-    app.debug = True
-    app.run(host='0.0.0.0', port=4996)
+if __name__ == "__main__":
+    app.run(debug=True)

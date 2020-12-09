@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for error in errors %}
+        <h1>{{ error.name}}</h1>
+        <p> On {{ error.line}}</p>
+        <p>{{ error.description }}</p>
+    {% endfor %}
+</body>
+</html>
