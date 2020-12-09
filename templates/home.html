@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
     {% for error in errors %}
-        <h1>{{ error.name}}</h1>
-        <p> On {{ error.line}}</p>
-        <p>{{ error.description }}</p>
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ error.name }}</a>
+            </div>
+              <p class="article-title" > Line: {{ error.line }}</p>
+            <p class="article-content">{{ error.description }}</p>
+          </div>
+        </article>
     {% endfor %}
-</body>
-</html>
+{% endblock content %}
