@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash, redirect
+from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'c6eef9e5b42780f9bb355cc25a85da78'
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -12,6 +15,21 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+
+
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('showErrors'))
+    return render_template('register.html', form=form)
+
+
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template('login.html', form=form)
 
 
 @app.route('/')
@@ -99,7 +117,6 @@ def deleteAnError(id):
     return 'Removed Error with id %s' % id
 
 
-@app.route('/')
 @app.route('/errorsApi', methods=['GET', 'POST'])
 def errorsFunction():
     if request.method == 'GET':
