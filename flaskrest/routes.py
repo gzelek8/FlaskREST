@@ -1,41 +1,62 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'c6eef9e5b42780f9bb355cc25a85da78'
-
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from database_setup import Base, UnityError
-
-# Connect to Database and create database session
-engine = create_engine('sqlite:///unity-errors.db?check_same_thread=False')
-Base.metadata.bind = engine
-
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
+from flask import render_template, url_for, flash, redirect, request
+from flaskrest import app, db, bcrypt
+from flaskrest.forms import RegistrationForm, LoginForm
+from flaskrest.models import User, UnityError
+from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!', 'success')
-        return redirect(url_for('showErrors'))
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created! You are now able to log in', 'success')
+        return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('showErrors'))
+        else:
+            flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', form=form)
+
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('showErrors'))
+
+
+@app.route("/account")
+@login_required
+def account():
+    return render_template('account.html')
+
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
 
 @app.route('/')
 @app.route('/errors')
 def showErrors():
-    errors = session.query(UnityError).all()
+    errors = db.session.query(UnityError).all()
     return render_template('home.html', errors=errors)
 
 
@@ -45,8 +66,8 @@ def newError():
         newError = UnityError(line=request.form['line'],
                               name=request.form['name'],
                               description=request.form['description'])
-        session.add(newError)
-        session.commit()
+        db.session.add(newError)
+        db.session.commit()
         return redirect(url_for('showErrors'))
     else:
         return render_template('newError.html')
@@ -54,7 +75,7 @@ def newError():
 
 @app.route("/errors/<int:error_id>/edit/", methods=['GET', 'POST'])
 def editError(error_id):
-    editedError = session.query(UnityError).filter_by(id=error_id).one()
+    editedError = db.session.query(UnityError).filter_by(id=error_id).one()
     if request.method == 'POST':
         if request.form['name']:
             editedError.description = request.form['name']
@@ -65,10 +86,10 @@ def editError(error_id):
 
 @app.route('/errors/<int:error_id>/delete/', methods=['GET', 'POST'])
 def deleteError(error_id):
-    errorToDelete = session.query(UnityError).filter_by(id=error_id).one()
+    errorToDelete = db.session.query(UnityError).filter_by(id=error_id).one()
     if request.method == 'POST':
-        session.delete(errorToDelete)
-        session.commit()
+        db.session.delete(errorToDelete)
+        db.session.commit()
         return redirect(url_for('showErrors', error_id=error_id))
     else:
         return render_template('deleteError.html', error=errorToDelete)
@@ -81,39 +102,39 @@ from flask import jsonify
 
 
 def get_errors():
-    errors = session.query(UnityError).all()
+    errors = db.session.query(UnityError).all()
     return jsonify(errors=[x.serialize for x in errors])
 
 
 def get_error(error_id):
-    errors = session.query(UnityError).filter_by(id=error_id).one()
+    errors = db.session.query(UnityError).filter_by(id=error_id).one()
     return jsonify(errors=errors.serialize)
 
 
 def makeANewError(line, name, description):
     addederror = UnityError(line=line, name=name, description=description)
-    session.add(addederror)
-    session.commit()
+    db.session.add(addederror)
+    db.session.commit()
     return jsonify(UnityError=addederror.serialize)
 
 
 def updateError(id, line, name, description):
-    updatedError = session.query(UnityError).filter_by(id=id).one()
+    updatedError = db.session.query(UnityError).filter_by(id=id).one()
     if not line:
         updatedError.line = line
     if not name:
         updatedError.name = name
     if not description:
         updatedError.description = description
-    session.add(updatedError)
-    session.commit()
+    db.session.add(updatedError)
+    db.session.commit()
     return 'Updated a Error with id %s' % id
 
 
 def deleteAnError(id):
-    errorToDelete = session.query(UnityError).filter_by(id=id).one()
-    session.delete(errorToDelete)
-    session.commit()
+    errorToDelete = db.session.query(UnityError).filter_by(id=id).one()
+    db.session.delete(errorToDelete)
+    db.session.commit()
     return 'Removed Error with id %s' % id
 
 
@@ -141,7 +162,3 @@ def errorFunctionId(id):
 
     elif request.method == 'DELETE':
         return deleteAnError(id)
-
-
-if __name__ == "__main__":
-    app.run(debug=True)

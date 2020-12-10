@@ -5,9 +5,11 @@
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ error.name }}</a>
+                <small class="text-muted">{{ error.date_posted }}</small>
             </div>
               <p class="article-title" > Line: {{ error.line }}</p>
-            <p class="article-content">{{ error.description }}</p>
+              <p class="article-content">{{ error.description }}</p>
+              <p class="article-content">{{ error.data_posted }}</p>
           </div>
         </article>
     {% endfor %}
