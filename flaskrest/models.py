@@ -1,6 +1,7 @@
 from datetime import datetime
 from flaskrest import db, login_manager
 from flask_login import UserMixin
+from hashlib import md5
 
 
 @login_manager.user_loader
@@ -14,6 +15,16 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     unity_errors = db.relationship('UnityError', backref='author', lazy=True)
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
+            digest, size)
+
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
 
 
 class UnityError(db.Model):

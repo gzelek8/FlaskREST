@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="register and login form">
-      <change afterPath="$PROJECT_DIR$/flaskrest/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskrest/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskrest/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskrest/templates/account.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.flaskenv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/templates/_post.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/templates/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FlaskREST.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FlaskREST.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database_setup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/layout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/static/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unity-errors.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,15 +53,39 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../venv" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Tycjan\Documents\informatyka\FlaskREST-Esiu-dev\flaskrest" />
       <recent name="C:\Users\peepe\PycharmProjects\FlaskREST\flaskrest" />
       <recent name="C:\Users\peepe\PycharmProjects\FlaskREST" />
       <recent name="C:\Users\peepe\PycharmProjects\FlaskREST\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.run (1)">
+    <configuration name="run (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FlaskREST" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="run" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="FlaskREST" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,8 +107,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.run (1)" />
+      </list>
+    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="" />
@@ -134,5 +174,43 @@
     <MESSAGE value="add html and csss" />
     <MESSAGE value="register and login form" />
     <option name="LAST_COMMIT_MESSAGE" value="register and login form" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="722" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607626984968">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="722" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607626984968" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607615170694">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607615170694" />
+    <state x="760" y="217" key="FileChooserDialogImpl" timestamp="1607620982816">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="760" y="217" key="FileChooserDialogImpl/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607620982816" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1607628234993">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607628234993" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1607628234993">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607628234993" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1607628234992">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607628234992" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1607628234993">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607628234993" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1607621876668">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607621876668" />
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607615896945">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1607615896945" />
   </component>
 </project>
