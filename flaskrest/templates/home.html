@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
+{% if current_user.is_authenticated %}
+<div class="content-section">
+    <legend class="border-bottom mb-4">Having trouble with your code?</legend>
+            <a style="display: inline-block; padding: 4px; border-radius: 2px; background-color: grey; border: 1px
+            solid black; text-decoration: none; color: white" href="{{ url_for('newError', username=current_user.username) }}" >Submit your error</a>
+</div>
+{% endif %}
     {% for error in errors %}
         <article class="media content-section">
           <div class="media-body">

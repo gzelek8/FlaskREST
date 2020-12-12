@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="user auth">
+    <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="register and login form">
+      <change afterPath="$PROJECT_DIR$/flaskrest/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/templates/account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskrest/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database_setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/static/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unity-errors.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,14 +113,7 @@
       <option name="project" value="LOCAL" />
       <updated>1607583041334</updated>
     </task>
-    <task id="LOCAL-00005" summary="user auth">
-      <created>1607602815707</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1607602815707</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,7 +133,6 @@
     <MESSAGE value="add home page" />
     <MESSAGE value="add html and csss" />
     <MESSAGE value="register and login form" />
-    <MESSAGE value="user auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="user auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="register and login form" />
   </component>
 </project>
