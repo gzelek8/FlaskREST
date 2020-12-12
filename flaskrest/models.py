@@ -32,7 +32,7 @@ class UnityError(db.Model):
     line = db.Column(db.Integer, nullable=False)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(250))
-    code_file = db.Column(db.String(20), default='default.cs')
+    # code_file = db.Column(db.String(20), default='default.cs')
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 

@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request
 from flaskrest import app, db, bcrypt
-from flaskrest.forms import RegistrationForm, LoginForm, EditProfileForm
+from flaskrest.forms import RegistrationForm, LoginForm, EditProfileForm, PostErrorForm
 from flaskrest.models import User, UnityError
 from flask_login import login_user, current_user, logout_user, login_required
 from datetime import datetime
@@ -69,11 +69,8 @@ def edit_profile():
 @login_required
 def account(username):
     user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('account.html', user=user, posts=posts)
+    errors = db.session.query(UnityError).filter(UnityError.user_id==user.id)
+    return render_template('account.html', user=user, errors=errors)
 
 
 @app.route("/about")
@@ -88,17 +85,19 @@ def showErrors():
     return render_template('home.html', errors=errors)
 
 
-@app.route('/errors/new/', methods=['GET', 'POST'])
-def newError():
-    if request.method == 'POST':
-        newError = UnityError(line=request.form['line'],
-                              name=request.form['name'],
-                              description=request.form['description'])
+@app.route('/<username>/submit/', methods=['GET', 'POST'])
+@login_required
+def newError(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    form = PostErrorForm()
+    if form.validate_on_submit():
+        newError = UnityError(line=form.line_nr.data, name=form.error_name.data, description=form.description.data,
+                              date_posted=datetime.utcnow(), user_id=user.id)
         db.session.add(newError)
         db.session.commit()
+        flash('Your post has been submitted.')
         return redirect(url_for('showErrors'))
-    else:
-        return render_template('newError.html')
+    return render_template('newError.html', form=form)
 
 
 @app.route("/errors/<int:error_id>/edit/", methods=['GET', 'POST'])

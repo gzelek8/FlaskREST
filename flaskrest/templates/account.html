@@ -11,12 +11,18 @@
         </tr>
     </table>
     <hr>
-    {% for post in posts %}
-    <table>
-        <tr valign="top">
-            {% include '_post.html' %}
-        </tr>
-    </table>
+        {% for error in errors %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ error.name }}</a>
+                <small class="text-muted">{{ error.date_posted }}</small>
+            </div>
+              <p class="article-title" > Line: {{ error.line }}</p>
+              <p class="article-content">{{ error.description }}</p>
+              <p class="article-content">{{ error.data_posted }}</p>
+          </div>
+        </article>
     {% endfor %}
     <div class="border-top pt-3">
         <small class="text-muted">
