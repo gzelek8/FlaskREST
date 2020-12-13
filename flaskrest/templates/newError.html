@@ -4,6 +4,7 @@
     <h1>Describe your error</h1>
     <form action="" method="post">
         {{ form.hidden_tag() }}
+        <legend class="border-bottom mb-4">{{ legend }} </legend>
         <p>
             {{ form.error_name.label }}<br>
             {{ form.error_name(size=32) }}<br>

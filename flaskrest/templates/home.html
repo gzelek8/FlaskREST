@@ -10,13 +10,15 @@
     {% for error in errors %}
         <article class="media content-section">
           <div class="media-body">
+               <div>
+                   <a class="article_author" href="{{ url_for('account', username=error.author.username) }}"> {{ error.author.username }} <img src="{{ error.author.avatar(32) }}"></a>
+              </div>
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ error.name }}</a>
+              <a class="mr-2" href="{{ url_for('showError', error_id=error.id) }}">{{ error.name }}</a>
                 <small class="text-muted">{{ error.date_posted }}</small>
             </div>
               <p class="article-title" > Line: {{ error.line }}</p>
               <p class="article-content">{{ error.description }}</p>
-              <p class="article-content">{{ error.data_posted }}</p>
           </div>
         </article>
     {% endfor %}

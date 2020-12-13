@@ -1,15 +1,17 @@
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from flaskrest import app, db, bcrypt
 from flaskrest.forms import RegistrationForm, LoginForm, EditProfileForm, PostErrorForm
 from flaskrest.models import User, UnityError
 from flask_login import login_user, current_user, logout_user, login_required
 from datetime import datetime
 
+
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -48,6 +50,14 @@ def logout():
     return redirect(url_for('showErrors'))
 
 
+@app.route("/account/<username>")
+@login_required
+def account(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    errors = db.session.query(UnityError).filter(UnityError.user_id == user.id)
+    return render_template('account.html', user=user, errors=errors)
+
+
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -56,21 +66,13 @@ def edit_profile():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         db.session.commit()
-        flash('Your changes have been saved.')
-        return redirect(url_for('edit_profile'))
+        flash('Your changes have been saved.', 'success')
+        return redirect(url_for('account', username=current_user.username))
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
-
-
-@app.route("/account/<username>")
-@login_required
-def account(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    errors = db.session.query(UnityError).filter(UnityError.user_id==user.id)
-    return render_template('account.html', user=user, errors=errors)
 
 
 @app.route("/about")
@@ -85,7 +87,13 @@ def showErrors():
     return render_template('home.html', errors=errors)
 
 
-@app.route('/<username>/submit/', methods=['GET', 'POST'])
+@app.route('/errors/<int:error_id>')
+def showError(error_id):
+    error = UnityError.query.get_or_404(error_id)
+    return render_template('error.html', error=error)
+
+
+@app.route('/<username>/submit', methods=['GET', 'POST'])
 @login_required
 def newError(username):
     user = User.query.filter_by(username=username).first_or_404()
@@ -95,31 +103,42 @@ def newError(username):
                               date_posted=datetime.utcnow(), user_id=user.id)
         db.session.add(newError)
         db.session.commit()
-        flash('Your post has been submitted.')
+        flash('Your post has been submitted.', 'success')
         return redirect(url_for('showErrors'))
-    return render_template('newError.html', form=form)
+    return render_template('newError.html', form=form, legend='New Error')
 
 
-@app.route("/errors/<int:error_id>/edit/", methods=['GET', 'POST'])
+@app.route("/errors/<int:error_id>/edit", methods=['GET', 'POST'])
+@login_required
 def editError(error_id):
-    editedError = db.session.query(UnityError).filter_by(id=error_id).one()
-    if request.method == 'POST':
-        if request.form['name']:
-            editedError.description = request.form['name']
-            return redirect(url_for('showErrors'))
-    else:
-        return render_template('editError.html', error=editedError)
-
-
-@app.route('/errors/<int:error_id>/delete/', methods=['GET', 'POST'])
-def deleteError(error_id):
-    errorToDelete = db.session.query(UnityError).filter_by(id=error_id).one()
-    if request.method == 'POST':
-        db.session.delete(errorToDelete)
+    editedError = UnityError.query.get_or_404(error_id)
+    if editedError.author != current_user:
+        abort(403)
+    form = PostErrorForm()
+    if form.validate_on_submit():
+        editedError.name = form.error_name.data
+        editedError.line = form.line_nr.data
+        editedError.description = form.description.data
         db.session.commit()
-        return redirect(url_for('showErrors', error_id=error_id))
-    else:
-        return render_template('deleteError.html', error=errorToDelete)
+        flash('Your error has been edited!', 'success')
+        return redirect(url_for('showError', error_id=editedError.id))
+    elif request.method == 'GET':
+        form.error_name.data = editedError.name
+        form.line_nr.data = editedError.line
+        form.description.data = editedError.description
+    return render_template('newError.html', form=form, legend='Edit Error')
+
+
+@app.route('/errors/<int:error_id>/delete', methods=['GET', 'POST'])
+@login_required
+def deleteError(error_id):
+    deletedError = UnityError.query.get_or_404(error_id)
+    if deletedError.author != current_user:
+        abort(403)
+    db.session.delete(deletedError)
+    db.session.commit()
+    flash('Your error has been deleted!', 'success')
+    return redirect(url_for('showErrors'))
 
 
 """
@@ -170,9 +189,9 @@ def errorsFunction():
     if request.method == 'GET':
         return get_errors()
     elif request.method == 'POST':
-        line = request.args.get('line', '')
-        name = request.args.get('name', '')
-        description = request.args.get('description', '')
+        line = request.args.get_or_404('line', '')
+        name = request.args.get_or_404('name', '')
+        description = request.args.get_or_404('description', '')
         return makeANewError(line, name, description)
 
 
@@ -182,9 +201,9 @@ def errorFunctionId(id):
         return get_errors(id)
 
     elif request.method == 'PUT':
-        line = request.args.get('line', '')
-        name = request.args.get('name', '')
-        description = request.args.get('description', '')
+        line = request.args.get_or_404('line', '')
+        name = request.args.get_or_404('name', '')
+        description = request.args.get_or_404('description', '')
         return updateError(id, line, name, description)
 
     elif request.method == 'DELETE':
