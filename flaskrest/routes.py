@@ -223,7 +223,7 @@ If you did not make this request then simply ignore this email and no changes wi
 '''
     mail.send(msg)
 
-
+#coment
 @app.route("/reset_password", methods=['GET', 'POST'])
 def reset_request():
     if current_user.is_authenticated:
