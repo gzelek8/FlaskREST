@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="register and login form">
-      <change afterPath="$PROJECT_DIR$/flaskrest/templates/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FlaskREST.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FlaskREST.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="Merge tyci-dev and update/delete error">
+      <change afterPath="$PROJECT_DIR$/flaskrest/templates/reset_request.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/templates/rest_token.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskrest/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/db.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskrest/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskrest/templates/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskrest/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskrest/templates/newError.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/newError.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -108,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607583041334</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge tyci-dev and update/delete error">
+      <created>1607874071913</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1607874071913</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,6 +136,7 @@
     <MESSAGE value="add home page" />
     <MESSAGE value="add html and csss" />
     <MESSAGE value="register and login form" />
-    <option name="LAST_COMMIT_MESSAGE" value="register and login form" />
+    <MESSAGE value="Merge tyci-dev and update/delete error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge tyci-dev and update/delete error" />
   </component>
 </project>
