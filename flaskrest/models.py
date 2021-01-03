@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from flaskrest import db
 
 
-# class User(db.Model, UserMixin):
+# class User(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     username = db.Column(db.String(20), unique=True, nullable=False)
 #     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -14,8 +14,17 @@ from flaskrest import db
 #     about_me = db.Column(db.String(140))
 #     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 #
-#     def __repr__(self):
-#         return '<User {}>'.format(self.username)
+#     @property
+#     def serialize(self):
+#         return {
+#             'username': self.username,
+#             'password': self.password,
+#             'email': self.email,
+#             'about_me': self.about_me,
+#             'id': self.id,
+#             'last_seen': self.last_seen,
+#             'unity_errors': self.unity_errors,
+#         }
 
 
 class UnityError(db.Model):
@@ -25,6 +34,7 @@ class UnityError(db.Model):
     description = db.Column(db.String(250))
     # code_file = db.Column(db.String(20), default='default.cs')
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    #user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     username = db.Column(db.String(50), nullable=False)
 
     @property
