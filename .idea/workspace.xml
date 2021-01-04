@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="rest">
-      <change beforePath="$PROJECT_DIR$/.idea/FlaskREST.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FlaskREST.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="status code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskrest/db.db" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/db.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskrest/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608052968161</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="status code">
+      <created>1609773667490</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1609773667490</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +150,7 @@
     <MESSAGE value="register and login form" />
     <MESSAGE value="Merge tyci-dev and update/delete error" />
     <MESSAGE value="password restart and auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="password restart and auth" />
+    <MESSAGE value="status code" />
+    <option name="LAST_COMMIT_MESSAGE" value="status code" />
   </component>
 </project>
