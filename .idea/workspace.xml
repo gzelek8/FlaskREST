@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="rest" />
+    <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="password restart and auth">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/db.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/static/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/_post.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/account.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/edit_profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/error.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/newError.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/reset_request.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/templates/rest_token.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/unity_errors.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/alembic.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/script.py.mako" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/81b843802f4f_error_posts_created.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/bc22929f46a6_users_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/f385dd7e97e5_new_fields_in_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,14 +150,7 @@
       <option name="project" value="LOCAL" />
       <updated>1608052968161</updated>
     </task>
-    <task id="LOCAL-00008" summary="rest">
-      <created>1609592776437</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1609592776437</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,7 +172,6 @@
     <MESSAGE value="register and login form" />
     <MESSAGE value="Merge tyci-dev and update/delete error" />
     <MESSAGE value="password restart and auth" />
-    <MESSAGE value="rest" />
-    <option name="LAST_COMMIT_MESSAGE" value="rest" />
+    <option name="LAST_COMMIT_MESSAGE" value="password restart and auth" />
   </component>
 </project>
