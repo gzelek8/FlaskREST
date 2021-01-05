@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e58d3c1-112b-4672-8d7c-ebb5baf6a799" name="Default Changelist" comment="status code">
+      <change afterPath="$PROJECT_DIR$/flaskrest/Controller/UnityErrorsController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/Controller/UsersController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/models/UnityError.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskrest/models/User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/FlaskREST.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FlaskREST.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/db.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskrest/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskrest/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +46,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\peepe\PycharmProjects\FlaskREST\flaskrest\Controller" />
+      <recent name="C:\Users\peepe\PycharmProjects\FlaskREST\flaskrest\models" />
       <recent name="C:\Users\peepe\PycharmProjects\FlaskREST\flaskrest" />
       <recent name="C:\Users\peepe\PycharmProjects\FlaskREST" />
       <recent name="C:\Users\peepe\PycharmProjects\FlaskREST\src" />
@@ -103,7 +116,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -196,26 +209,15 @@
     <MESSAGE value="status code" />
     <option name="LAST_COMMIT_MESSAGE" value="status code" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609775809434">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1609775809434" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1609777861985">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1609777861985" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1609777861984">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1609777861984" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1609777861984">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1609777861984" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1609777861985">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.32.1680.1010@0.0.1920.1040" timestamp="1609777861985" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/flaskrest/routes.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
