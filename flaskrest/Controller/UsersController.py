@@ -49,4 +49,4 @@ class UsersController:
     @staticmethod
     def get_all_users():
         users = db.session.query(User).all()
-        return make_response(jsonify(users=[x.serialize for x in users]), 200)
+        return make_response(jsonify(users=users), 200)
