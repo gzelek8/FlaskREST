@@ -27,7 +27,7 @@ class User(db.Model):
             'id': self.id,
             'public_id': self.public_id,
             # 'last_seen': self.last_seen,
-            'unity_errors': self.unity_errors,
+            'unity_errors': [x.serialize for x in self.unity_errors],
             'admin': self.admin,
         }
 

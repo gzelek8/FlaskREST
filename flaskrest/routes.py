@@ -25,8 +25,8 @@ def token_required(f):
 
         token = None
 
-        if 'x-access-tokens' in request.headers:
-            token = request.headers['x-access-tokens']
+        if 'x-access-token' in request.cookies:
+            token = request.cookies['x-access-token']
 
         if not token:
             return jsonify({'message': 'a valid token is missing'})
@@ -64,7 +64,7 @@ def newError(current_user):
 
 @app.route("/errors/<int:error_id>", methods=['PUT', 'PATCH'])
 @token_required
-def editError(error_id):
+def editError(current_user, error_id):
     logging()
     return errorsController.editError(error_id)
 
@@ -76,19 +76,19 @@ def deleteError(current_user, error_id):
     return errorsController.deleteError(current_user, error_id)
 
 
-@app.route('/users', methods=['GET'])
+@app.route('/users')
 def showUsers():
     logging()
     return usersController.get_all_users()
 
 
-@app.route("/register", methods=['GET', 'POST'])
+@app.route("/users", methods=['GET', 'POST'])
 def register():
     logging()
     return usersController.signup_user()
 
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/login", methods=['GET', 'POST'])   #rest exception
 def login():
     logging()
     return usersController.login_user()
