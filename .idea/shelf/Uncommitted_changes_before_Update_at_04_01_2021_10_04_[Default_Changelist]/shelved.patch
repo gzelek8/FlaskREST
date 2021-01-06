@@ -1,0 +1,138 @@
+Index: flaskrest/routes.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from datetime import datetime\r\n\r\nfrom flask import flash, abort, jsonify, request\r\nfrom flask_login import current_user\r\n\r\nfrom flaskrest import app, db\r\nfrom flaskrest.models import UnityError\r\n\r\n\r\n@app.route('/')\r\n@app.route('/errors')\r\ndef showErrors():\r\n    errors = db.session.query(UnityError).all()\r\n    return jsonify(errors=[x.serialize for x in errors])\r\n\r\n\r\n@app.route('/errors/<int:error_id>')\r\ndef showError(error_id):\r\n    errors = UnityError.query.get_or_404(error_id)\r\n    return jsonify(errors=errors.serialize)\r\n\r\n\r\n@app.route('/errors', methods=['GET', 'POST'])\r\ndef newError():\r\n    line = request.args.get('line', '')\r\n    name = request.args.get('name', '')\r\n    description = request.args.get('description', '')\r\n    username = request.args.get('username', '')\r\n    newError = UnityError(line=line, name=name, description=description,\r\n                          date_posted=datetime.utcnow(), username=username)\r\n    db.session.add(newError)\r\n    db.session.commit()\r\n    flash('Your post has been submitted.', 'success')\r\n    return jsonify(UnityError=newError.serialize)\r\n\r\n\r\n@app.route(\"/errors/<int:error_id>\", methods=['GET', 'POST'])\r\ndef editError(error_id, line, name, description):\r\n    updatedError = UnityError.query.get_or_404(error_id)\r\n    if not line:\r\n        updatedError.line = line\r\n    if not name:\r\n        updatedError.name = name\r\n    if not description:\r\n        updatedError.description = description\r\n    db.session.add(updatedError)\r\n    db.session.commit()\r\n    flash('Updated a Error with id %s' % id)\r\n    return jsonify(UnityError=updatedError.serialize)\r\n\r\n\r\n@app.route('/errors/<int:error_id>', methods=['GET', 'POST'])\r\ndef deleteError(error_id):\r\n    deletedError = UnityError.query.get_or_404(error_id)\r\n    if deletedError.author != current_user:\r\n        abort(403)\r\n    db.session.delete(deletedError)\r\n    db.session.commit()\r\n    flash('Your error has been deleted!', 'success')\r\n    return 'Removed Error with id %s' % id\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/flaskrest/routes.py b/flaskrest/routes.py
+--- a/flaskrest/routes.py	(revision 452d6a60485156403c80a7836c2515e6d1dc9ae8)
++++ b/flaskrest/routes.py	(date 1609750797682)
+@@ -20,41 +20,59 @@
+     return jsonify(errors=errors.serialize)
+ 
+ 
+-@app.route('/errors', methods=['GET', 'POST'])
++@app.route('/errors', methods=['POST'])
+ def newError():
+-    line = request.args.get('line', '')
+-    name = request.args.get('name', '')
+-    description = request.args.get('description', '')
+-    username = request.args.get('username', '')
++    line = request.form['line']
++    name = request.form['name']
++    description = request.form['description']
++    username = request.form['username']
+     newError = UnityError(line=line, name=name, description=description,
+                           date_posted=datetime.utcnow(), username=username)
+     db.session.add(newError)
+     db.session.commit()
+-    flash('Your post has been submitted.', 'success')
++    print('Your post has been submitted.', 'success')
+     return jsonify(UnityError=newError.serialize)
+ 
+ 
+-@app.route("/errors/<int:error_id>", methods=['GET', 'POST'])
+-def editError(error_id, line, name, description):
++@app.route("/errors/<int:error_id>", methods=['PUT'])
++def editError(error_id):
+     updatedError = UnityError.query.get_or_404(error_id)
+-    if not line:
+-        updatedError.line = line
+-    if not name:
+-        updatedError.name = name
+-    if not description:
+-        updatedError.description = description
+-    db.session.add(updatedError)
++    if 'line' in request.form:
++        updatedError.line = request.form['line']
++    if 'name' in request.form:
++        updatedError.name = request.form.get('name', '')
++    if 'description' in request.form:
++        updatedError.description = request.form.get('description', '')
+     db.session.commit()
+-    flash('Updated a Error with id %s' % id)
++    print('Updated a Error with id %s' % id)
+     return jsonify(UnityError=updatedError.serialize)
+ 
+ 
+-@app.route('/errors/<int:error_id>', methods=['GET', 'POST'])
++@app.route('/errors/<int:error_id>', methods=['DELETE'])
+ def deleteError(error_id):
+     deletedError = UnityError.query.get_or_404(error_id)
+-    if deletedError.author != current_user:
+-        abort(403)
++    # if deletedError.author != current_user:
++    #     abort(403)
+     db.session.delete(deletedError)
+     db.session.commit()
+-    flash('Your error has been deleted!', 'success')
+-    return 'Removed Error with id %s' % id
++    print('Your error has been deleted!', 'success')
++    return jsonify({'result': True})
++
++
++# @app.route('/users')
++# def showUsers():
++#     users = db.session.query(User).all()
++#     return jsonify(errors=[x.serialize for x in users])
++#
++#
++# @app.route("/register", methods=['POST'])
++# def register():
++#     username = request.form['username']
++#     email = request.form['email']
++#     password = request.form['password']
++#     about_me = request.form['about_me']
++#     user = User(username=username, email=email, password=password, about_me=about_me)
++#     db.session.add(user)
++#     db.session.commit()
++#     print('Your acount has been created.', 'success')
++#     return jsonify(User=user.serialize)
+Index: flaskrest/models.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from datetime import datetime\r\n\r\nfrom flask_login import UserMixin\r\n\r\nfrom flaskrest import db\r\n\r\n\r\n# class User(db.Model, UserMixin):\r\n#     id = db.Column(db.Integer, primary_key=True)\r\n#     username = db.Column(db.String(20), unique=True, nullable=False)\r\n#     email = db.Column(db.String(120), unique=True, nullable=False)\r\n#     password = db.Column(db.String(60), nullable=False)\r\n#     unity_errors = db.relationship('UnityError', backref='author', lazy=True)\r\n#     about_me = db.Column(db.String(140))\r\n#     last_seen = db.Column(db.DateTime, default=datetime.utcnow)\r\n#\r\n#     def __repr__(self):\r\n#         return '<User {}>'.format(self.username)\r\n\r\n\r\nclass UnityError(db.Model):\r\n    id = db.Column(db.Integer, primary_key=True)\r\n    line = db.Column(db.Integer, nullable=False)\r\n    name = db.Column(db.String(50), nullable=False)\r\n    description = db.Column(db.String(250))\r\n    # code_file = db.Column(db.String(20), default='default.cs')\r\n    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)\r\n    username = db.Column(db.String(50), nullable=False)\r\n\r\n    @property\r\n    def serialize(self):\r\n        return {\r\n            'line': self.line,\r\n            'name': self.name,\r\n            'description': self.description,\r\n            # 'code_file': self.code_file,\r\n            'date_posted': self.date_posted,\r\n            'username': self.username,\r\n            'id': self.id,\r\n        }\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/flaskrest/models.py b/flaskrest/models.py
+--- a/flaskrest/models.py	(revision 452d6a60485156403c80a7836c2515e6d1dc9ae8)
++++ b/flaskrest/models.py	(date 1609750797681)
+@@ -5,7 +5,7 @@
+ from flaskrest import db
+ 
+ 
+-# class User(db.Model, UserMixin):
++# class User(db.Model):
+ #     id = db.Column(db.Integer, primary_key=True)
+ #     username = db.Column(db.String(20), unique=True, nullable=False)
+ #     email = db.Column(db.String(120), unique=True, nullable=False)
+@@ -14,8 +14,17 @@
+ #     about_me = db.Column(db.String(140))
+ #     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
+ #
+-#     def __repr__(self):
+-#         return '<User {}>'.format(self.username)
++#     @property
++#     def serialize(self):
++#         return {
++#             'username': self.username,
++#             'password': self.password,
++#             'email': self.email,
++#             'about_me': self.about_me,
++#             'id': self.id,
++#             'last_seen': self.last_seen,
++#             'unity_errors': self.unity_errors,
++#         }
+ 
+ 
+ class UnityError(db.Model):
+@@ -25,6 +34,7 @@
+     description = db.Column(db.String(250))
+     # code_file = db.Column(db.String(20), default='default.cs')
+     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
++    #user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+     username = db.Column(db.String(50), nullable=False)
+ 
+     @property

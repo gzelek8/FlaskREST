@@ -22,3 +22,6 @@ flask-migrate==2.5.3
 python-editor==1.0.4
 blinker==1.4
 flask-mail==0.9.1
+uuid==1.30
+DateTime~=4.3
+PyJWT==1.7.1
