@@ -15,8 +15,8 @@ class UnityErrorsController:
 
     @staticmethod
     def getSingleError(error_id):
-        errors = UnityError.query.get_or_404(error_id)
-        return make_response(jsonify(errors=errors.serialize), 200)
+        error = UnityError.query.get_or_404(error_id)
+        return make_response(jsonify(error=error.serialize), 200)
 
     @staticmethod
     def createNewError(current_user):
