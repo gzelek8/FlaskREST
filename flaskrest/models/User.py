@@ -17,17 +17,20 @@ class User(db.Model):
     # about_me = db.Column(db.String(140))
     # last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
+    def is_admin(self, is_admin):
+        return self.admin == is_admin
+
     @property
     def serialize(self):
         return {
+            'public_id': self.public_id,
             'username': self.username,
-            'password': self.password,
             'email': self.email,
+            'password': self.password,
             # 'about_me': self.about_me,
             'id': self.id,
-            'public_id': self.public_id,
             # 'last_seen': self.last_seen,
-            'unity_errors': [x.serialize for x in self.unity_errors],
+            'unity_errors': len([x.serialize for x in self.unity_errors]),
             'admin': self.admin,
         }
 

@@ -12,7 +12,7 @@ from flaskrest.models.User import User
 class UsersController:
 
     @staticmethod
-    def signup_user():
+    def signupUser():
         data = request.get_json()
         username = data['username']
         password = data['password']
@@ -20,7 +20,7 @@ class UsersController:
         hashed_password = generate_password_hash(password, method='sha256')
 
         newUser = User(public_id=str(uuid.uuid4()), username=username, password=hashed_password, email=email,
-                       admin=False)
+                       admin=True)
         try:
             db.session.add(newUser)
             db.session.commit()
@@ -29,7 +29,7 @@ class UsersController:
             return make_response(jsonify(msg='Error: {}. '.format(exception_message)), 400)
 
     @staticmethod
-    def login_user():
+    def loginUser():
 
         if 'x-access-token' in request.cookies:
             token = request.cookies['x-access-token']
@@ -61,6 +61,11 @@ class UsersController:
         return make_response('could not verify password', 401, {'WWW.Authentication': 'Basic realm: "login required"'})
 
     @staticmethod
-    def get_all_users():
+    def getSingleUser(user_id):
+        user = User.query.get_or_404(user_id)
+        return make_response(jsonify(user=user.serialize), 200)
+
+    @staticmethod
+    def getAllUsers():
         users = db.session.query(User).all()
         return make_response(jsonify(users=[x.serialize for x in users]), 200)
