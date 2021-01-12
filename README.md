@@ -1,10 +1,12 @@
-Grzegorz Zelek
-Tycjan Woronko
+Grzegorz Zelek * Tycjan Woronko
+
 
 WPROWADZENIE:
+
 Stworzyliśmy część serwerową aplikacji internetowej, zgodnej z architekturą REST. Aplikacja ma za zadanie stworzenie imitacji StackOverflow pozwalającej użytkownikom na dzielenie się swoimi błędami podczas programowania gier w programie Unity Engine. Została napisana w języku Python, wykorzystując framework Flask.
 
 FUNKCJONALNOŚĆ:
+
 •	Wyświetlanie wszystkich opublikowanych błędów – strona domyślna, dostępna dla wszystkich. Wyświetla wszystkie rekordy z tabeli błędów bazy danych, zwracając odpowiedź w postaci jsona. Wykorzystuje polecenie http GET.
 •	Publikacja nowych oraz usuwanie, edytowanie starych błędów – pobierając z żądania parametry, tworzy nowy obiekt błędu I dodaje go do bazy danych. Funkcjonalność dostępna tylko dla zalogowanych użytkowników, uprzednio sprawdzając obecność access-tokena w plikach cookies. Zwraca odpowiedź w postaci jsona i wykorzystuje polecenie http GET oraz POST.
 •	Rejestracja nowego konta użytkownika - pobierając z żądania parametry, tworzy nowy obiekt użytkownika I dodaje go do bazy danych. Przesłane hasło jest uprzednio szyfrowane korzystając z Python Werkzeug, które umożliwia jednostronne hashowanie hasła. Uniemożliwia to odczytanie go z bazy danych jako tekst oraz szyfrując. Zwraca odpowiedź w postaci jsona i wykorzystuje polecenie http POST.
