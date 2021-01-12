@@ -1,4 +1,5 @@
-Grzegorz Zelek * Tycjan Woronko
+Grzegorz Zelek & Tycjan Woronko
+
 
 
 WPROWADZENIE:
